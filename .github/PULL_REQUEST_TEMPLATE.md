@@ -2,6 +2,16 @@
 
 <!-- Briefly describe the change - which script(s), what step of the pipeline. -->
 
+## Figure(s)/analysis affected
+
+- [ ] Figure 1
+- [ ] Figure 2
+- [ ] Figure 3
+- [ ] Figure 4
+- [ ] Figure 5
+- [ ] Figure 6
+- [ ] N/A (infra/setup)
+
 ## Why
 
 <!-- What problem does this solve, or what does it bring closer to matching the paper's method? -->
