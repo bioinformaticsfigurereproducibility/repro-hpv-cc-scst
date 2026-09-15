@@ -3,9 +3,36 @@
 .RData
 .Ruserdata
 
+# Python (CellPhoneDB, iStar)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
 # Data Files
 reproduce_figure*/data/*
 !reproduce_figure*/data/README.md
 
+# Raw downloads (GEO, Zenodo, TCGA)
+/data/*
+!/data/README.md
+
+# Single-cell / spatial data objects
 *.rds
 *.RDS
+*.h5
+*.h5ad
+*.h5seurat
+*.loom
+*.mtx
+
+# Compressed downloads and archives
+*.gz
+*.tar
+*.tgz
+*.zip
+*.bz2
+*.xz
