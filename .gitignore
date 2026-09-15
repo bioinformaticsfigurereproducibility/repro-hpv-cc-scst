@@ -4,11 +4,8 @@
 .Ruserdata
 
 # Data Files
-reproduce_figure5/data/*
-!reproduce_figure5/data/README.md
-
-reproduce_figure1/data/*
-!reproduce_figure1/data/README.md
+reproduce_figure*/data/*
+!reproduce_figure*/data/README.md
 
 *.rds
 *.RDS
