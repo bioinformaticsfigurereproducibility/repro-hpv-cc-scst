@@ -9,7 +9,7 @@ assignees: ''
 
 ## What the paper reports
 
-<!-- e.g. "83,316 cells after quality filtering" (Tsukui et al. 2020) -->
+<!-- e.g. "269 HPV-positive patients in the TCGA-CESC training set" (Su et al. 2025) -->
 
 ## What this pipeline produces
 
