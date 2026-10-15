@@ -22,7 +22,7 @@ ARG MAMBA_DOCKERFILE_ACTIVATE=1
 RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.15/bioc/src/contrib/BayesSpace_1.6.0.tar.gz", repos = NULL, type = "source")' && \
     Rscript -e 'library(BayesSpace); stopifnot(packageVersion("BayesSpace") == "1.6.0")'
 
-# b. Install CellTrek (Version Unknown)
+# b. Install CellTrek (Version 0.0.94)
 # Reference: https://github.com/navinlabcode/CellTrek
 # remotes installs package for remote resources like github https://remotes.r-lib.org/reference/install_github.html
 # To get b8059... go to # commits and copy the commit you want to version
@@ -31,23 +31,29 @@ RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.15/bioc/sr
 # install_github, instead error thrown
 # This is used so env can have full control of dependencies and version control
 RUN Rscript -e 'remotes::install_github("navinlabcode/CellTrek@b80590e5dddcf7076c9f88c935ff2629a963d5b2", upgrade = "never", dependencies = FALSE)' && \
-    Rscript -e 'library(CellTrek)'
+    Rscript -e 'library(CellTrek); stopifnot(packageVersion("CellTrek") == "0.0.94")'
 
-# c. Install iStar (Version Unknown)
-# Reference: https://github.com/daviddaiweizhang/istar
 
-# d. Install CellChat 1.6.1
+# c. Install CellChat 1.6.1
 # Reference: https://github.com/sqjin/CellChat
+RUN Rscript -e 'remotes::install_github("sqjin/CellChat@e4f68625b074247d619c2e488d33970cc531e17c", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(CellChat); stopifnot(packageVersion("CellChat") == "1.6.1")'
 
-# e. Install CellPhoneDB (Version Unknown)
-# Reference: https://github.com/ventolab/CellphoneDB
-
-# f. Install iTALK (Version Unknown)
+# d. Install iTALK (Version 0.1.0)
 # Reference: https://github.com/Coolgenome/iTALK
+RUN Rscript -e 'remotes::install_github("Coolgenome/iTALK@6d9b3907f00004fcac9514d2726ad68d524a952b", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(iTALK); stopifnot(packageVersion("iTALK") == "0.1.0")'
 
-# g. Install AUCell 1.20.2 from source (Bioconductor 3.16)
+# e. Install AUCell 1.20.2 from source (Bioconductor 3.16)
 # Available on bioconductor only; its dependencies are installed via env.yaml
 # Reference: https://bioconductor.org/packages/3.16/bioc/html/AUCell.html
 RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/AUCell_1.20.2.tar.gz", repos = NULL, type = "source")' && \
     Rscript -e 'library(AUCell); stopifnot(packageVersion("AUCell") == "1.20.2")'
 
+# 6. Set the working directory where the repo will be mounted at runtime
+WORKDIR /home/mambauser/repro-hpv-cc-scst
+
+# 7. Image metadata
+LABEL org.opencontainers.image.title="repro-hpv-cc-scst" \
+      org.opencontainers.image.description="Analysis environment for reproducing Su et al. 2025, Front Immunol" \
+      org.opencontainers.image.source="https://github.com/bioinformaticsfigurereproducibility/repro-hpv-cc-scst"
