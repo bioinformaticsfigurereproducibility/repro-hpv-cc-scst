@@ -15,7 +15,7 @@ RUN micromamba install -y -n base -f /tmp/env.yaml && \
 ARG MAMBA_DOCKERFILE_ACTIVATE=1
 
 # 5. Install dependencies not available on conda
-
+# Order matters: dependencies installed from source must come before the packages that need them
 # a. CRAN packages with no 4.2 build on conda-forge
 # R 4.2.3 WAS RELEASED MARCH 15,2023. Paper was submitted April 25, 2025. Looking for latest version in that timeframe
 # NMF is required by Cellchat; packcircles is required by Celltrek; leidenbase is required by monocole 2
@@ -55,28 +55,28 @@ RUN Rscript -e 'remotes::install_github("navinlabcode/CellTrek@b80590e5dddcf7076
 RUN Rscript -e 'remotes::install_github("sqjin/CellChat@e4f68625b074247d619c2e488d33970cc531e17c", upgrade = "never", dependencies = FALSE)' && \
     Rscript -e 'library(CellChat); stopifnot(packageVersion("CellChat") == "1.6.1")'
 
-# e. Install iTALK (Version 0.1.0)
+# e. Install monocole 2.26.0 from source (Bioconductor 3.16) which requires leidenbase which is not compatible with R 4.2
+# Reference: https://bioconductor.org/packages/3.16/bioc/html/monocle.html
+RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/monocle_2.26.0.tar.gz", repos = NULL, type = "source")' && \
+    Rscript -e 'library(monocle); stopifnot(packageVersion("monocle") == "2.26.0")'
+
+# f. Install iTALK (Version 0.1.0)
 # Reference: https://github.com/Coolgenome/iTALK
 RUN Rscript -e 'remotes::install_github("Coolgenome/iTALK@6d9b3907f00004fcac9514d2726ad68d524a952b", upgrade = "never", dependencies = FALSE)' && \
     Rscript -e 'library(iTALK); stopifnot(packageVersion("iTALK") == "0.1.0")'
 
-# f. Install AUCell 1.20.2 from source (Bioconductor 3.16)
+# g. Install AUCell 1.20.2 from source (Bioconductor 3.16)
 # Available on bioconductor only; its dependencies are installed via env.yaml
 # Reference: https://bioconductor.org/packages/3.16/bioc/html/AUCell.html
 RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/AUCell_1.20.2.tar.gz", repos = NULL, type = "source")' && \
     Rscript -e 'library(AUCell); stopifnot(packageVersion("AUCell") == "1.20.2")'
 
-# g. Install Estimate  (Version 1.0.13)
+# h. Install Estimate  (Version 1.0.13)
 # Original Reference: https://bioinformatics.mdanderson.org/estimate/rpackage.html
 # R-forge is the source but I cannot seem to connect to server, so will download using Github mirror
 # Github Reference: https://github.com/r-forge/estimate/tree/master
 RUN Rscript -e 'remotes::install_github("r-forge/estimate@abd60e4979c50a88407f7bfb9211687cb443abc6", subdir = "pkg/estimate", upgrade = "never", dependencies = FALSE)' && \
     Rscript -e 'library(estimate); stopifnot(packageVersion("estimate") == "1.0.13")'
-
-# h. Install monocole 2.26.0 from source (Bioconductor 3.16) which requires leidenbase which is not compatible with R 4.2
-# Reference: https://bioconductor.org/packages/3.16/bioc/html/monocle.html
-RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/monocle_2.26.0.tar.gz", repos = NULL, type = "source")' && \
-    Rscript -e 'library(monocle); stopifnot(packageVersion("monocle") == "2.26.0")'
 
 # 6. Set the working directory where the repo will be mounted at runtime
 WORKDIR /home/mambauser/repro-hpv-cc-scst
