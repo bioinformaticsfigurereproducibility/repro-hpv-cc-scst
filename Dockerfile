@@ -29,14 +29,14 @@ RUN Rscript -e 'remotes::install_version("packcircles", version = "0.3.5", repos
     Rscript -e 'library(packcircles); stopifnot(packageVersion("packcircles") == "0.3.5")'
 
 # leidenbase 0.1.18 published 04/15/2023 https://packagemanager.posit.co/client/#/repos/cran/packages/leidenbase/versions
-#RUN Rscript -e 'remotes::install_version("leidenbase", version = "0.1.18", repos = "https://cloud.r-project.org", upgrade = "never", dependencies = FALSE)' && \
-#    Rscript -e 'library(leidenbase); stopifnot(packageVersion("leidenbase") == "0.1.18")'
+RUN Rscript -e 'remotes::install_version("leidenbase", version = "0.1.18", repos = "https://cloud.r-project.org", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(leidenbase); stopifnot(packageVersion("leidenbase") == "0.1.18")'
 
 # b. Install BayesSpace 1.6.0 from source (Bioconductor 3.15)
 # Available on bioconductor only; its dependencies are installed via env.yaml
 # Reference: https://bioconductor.org/packages/3.15/bioc/html/BayesSpace.html
-#RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.15/bioc/src/contrib/BayesSpace_1.6.0.tar.gz", repos = NULL, type = "source")' && \
-#    Rscript -e 'library(BayesSpace); stopifnot(packageVersion("BayesSpace") == "1.6.0")'
+RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.15/bioc/src/contrib/BayesSpace_1.6.0.tar.gz", repos = NULL, type = "source")' && \
+    Rscript -e 'library(BayesSpace); stopifnot(packageVersion("BayesSpace") == "1.6.0")'
 
 # c. Install CellTrek (Version 0.0.94)
 # Reference: https://github.com/navinlabcode/CellTrek
@@ -46,40 +46,40 @@ RUN Rscript -e 'remotes::install_version("packcircles", version = "0.3.5", repos
 # dependencies = false applies to dependencies missing from the env. It does not download dependencies using
 # install_github, instead error thrown
 # This is used so env can have full control of dependencies and version control
-#RUN Rscript -e 'remotes::install_github("navinlabcode/CellTrek@b80590e5dddcf7076c9f88c935ff2629a963d5b2", upgrade = "never", dependencies = FALSE)' && \
-#    Rscript -e 'library(CellTrek); stopifnot(packageVersion("CellTrek") == "0.0.94")'
+RUN Rscript -e 'remotes::install_github("navinlabcode/CellTrek@b80590e5dddcf7076c9f88c935ff2629a963d5b2", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(CellTrek); stopifnot(packageVersion("CellTrek") == "0.0.94")'
 
 
 # d. Install CellChat 1.6.1
 # Reference: https://github.com/sqjin/CellChat
-#RUN Rscript -e 'remotes::install_github("sqjin/CellChat@e4f68625b074247d619c2e488d33970cc531e17c", upgrade = "never", dependencies = FALSE)' && \
-#    Rscript -e 'library(CellChat); stopifnot(packageVersion("CellChat") == "1.6.1")'
+RUN Rscript -e 'remotes::install_github("sqjin/CellChat@e4f68625b074247d619c2e488d33970cc531e17c", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(CellChat); stopifnot(packageVersion("CellChat") == "1.6.1")'
 
 # e. Install iTALK (Version 0.1.0)
 # Reference: https://github.com/Coolgenome/iTALK
-#RUN Rscript -e 'remotes::install_github("Coolgenome/iTALK@6d9b3907f00004fcac9514d2726ad68d524a952b", upgrade = "never", dependencies = FALSE)' && \
-#    Rscript -e 'library(iTALK); stopifnot(packageVersion("iTALK") == "0.1.0")'
+RUN Rscript -e 'remotes::install_github("Coolgenome/iTALK@6d9b3907f00004fcac9514d2726ad68d524a952b", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(iTALK); stopifnot(packageVersion("iTALK") == "0.1.0")'
 
 # f. Install AUCell 1.20.2 from source (Bioconductor 3.16)
 # Available on bioconductor only; its dependencies are installed via env.yaml
 # Reference: https://bioconductor.org/packages/3.16/bioc/html/AUCell.html
-#RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/AUCell_1.20.2.tar.gz", repos = NULL, type = "source")' && \
-#    Rscript -e 'library(AUCell); stopifnot(packageVersion("AUCell") == "1.20.2")'
+RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/AUCell_1.20.2.tar.gz", repos = NULL, type = "source")' && \
+    Rscript -e 'library(AUCell); stopifnot(packageVersion("AUCell") == "1.20.2")'
 
 # g. Install Estimate  (Version 1.0.13)
 # Original Reference: https://bioinformatics.mdanderson.org/estimate/rpackage.html
 # R-forge is the source but I cannot seem to connect to server, so will download using Github mirror
 # Github Reference: https://github.com/r-forge/estimate/tree/master
-#RUN Rscript -e 'remotes::install_github("r-forge/estimate@abd60e4979c50a88407f7bfb9211687cb443abc6", subdir = "pkg/estimate", upgrade = "never", dependencies = FALSE)' && \
-#    Rscript -e 'library(estimate); stopifnot(packageVersion("estimate") == "1.0.13")'
+RUN Rscript -e 'remotes::install_github("r-forge/estimate@abd60e4979c50a88407f7bfb9211687cb443abc6", subdir = "pkg/estimate", upgrade = "never", dependencies = FALSE)' && \
+    Rscript -e 'library(estimate); stopifnot(packageVersion("estimate") == "1.0.13")'
 
 # h. Install monocole 2.26.0 from source (Bioconductor 3.16) which requires leidenbase which is not compatible with R 4.2
 # Reference: https://bioconductor.org/packages/3.16/bioc/html/monocle.html
-#RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/monocle_2.26.0.tar.gz", repos = NULL, type = "source")' && \
-#    Rscript -e 'library(monocle); stopifnot(packageVersion("monocle") == "2.26.0")'
+RUN Rscript -e 'install.packages("https://bioconductor.org/packages/3.16/bioc/src/contrib/monocle_2.26.0.tar.gz", repos = NULL, type = "source")' && \
+    Rscript -e 'library(monocle); stopifnot(packageVersion("monocle") == "2.26.0")'
 
 # 6. Set the working directory where the repo will be mounted at runtime
-#WORKDIR /home/mambauser/repro-hpv-cc-scst
+WORKDIR /home/mambauser/repro-hpv-cc-scst
 
 # 7. Image metadata
 LABEL org.opencontainers.image.title="repro-hpv-cc-scst" \
