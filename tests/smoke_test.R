@@ -16,7 +16,7 @@ pinned <- c(
   iTALK       = "0.1.0",
   estimate    = "1.0.13",
   NMF         = "0.26",
-  packcircles = "0.3.6",
+  packcircles = "0.3.5",
   leidenbase  = "0.1.18"
 )
 
@@ -30,8 +30,10 @@ for (p in names(pinned)) {
   if (!ok) {
     failures <- c(failures, sprintf("%s: not installed", p))
   } else if (as.character(packageVersion(p)) != pinned[[p]]) {
-    failures <- c(failures, sprintf("%s: expected %s, found %s",
-                                    p, pinned[[p]], packageVersion(p)))
+    failures <- c(failures, sprintf(
+      "%s: expected %s, found %s",
+      p, pinned[[p]], packageVersion(p)
+    ))
   } else {
     message(sprintf("OK  %-12s %s", p, packageVersion(p)))
   }
