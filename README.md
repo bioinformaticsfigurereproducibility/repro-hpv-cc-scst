@@ -44,6 +44,8 @@ Per the original paper's Data Availability Statement:
 | Stromal/Immune scoring | ESTIMATE | — |
 | Prognostic signature construction | Cox regression + LASSO (glmnet) | — |
 
+* **CellTrek:** no version stated in paper; pinned to b80590e (Mar 2022), the only code state available before the paper’s received date (Apr 25, 2025). The repo had no further commits until 2026.
+
 ## Figures to Reproduce
 
 - **Figure 1:** Super-resolution tissue architecture (iStar) and spatial marker distribution in HPV+/HPV− CC
