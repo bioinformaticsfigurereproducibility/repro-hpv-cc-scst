@@ -6,19 +6,19 @@
 
 # Packages with a version pinned in the Dockerfile or env.yaml
 pinned <- c(
-  Seurat      = "4.3.0",
-  SeuratObject = "4.1.3"
-  BayesSpace  = "1.6.0",
-  AUCell      = "1.20.2",
-  monocle     = "2.26.0",
-  ReactomePA  = "1.42.0",
-  CellChat    = "1.6.1",
-  CellTrek    = "0.0.94",
-  iTALK       = "0.1.0",
-  estimate    = "1.0.13",
-  NMF         = "0.26",
+  Seurat = "4.3.0",
+  SeuratObject = "4.1.3",
+  BayesSpace = "1.6.0",
+  AUCell = "1.20.2",
+  monocle = "2.26.0",
+  ReactomePA = "1.42.0",
+  CellChat = "1.6.1",
+  CellTrek = "0.0.94",
+  iTALK = "0.1.0",
+  estimate = "1.0.13",
+  NMF = "0.26",
   packcircles = "0.3.5",
-  leidenbase  = "0.1.18"
+  leidenbase = "0.1.18",
   Matrix = "1.6.0"
 )
 
