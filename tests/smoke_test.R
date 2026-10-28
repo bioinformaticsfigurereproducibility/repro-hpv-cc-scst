@@ -19,7 +19,7 @@ pinned <- c(
   NMF         = "0.26",
   packcircles = "0.3.5",
   leidenbase  = "0.1.18"
-  Matrix = "1.5.4"
+  Matrix = "1.6.0"
 )
 
 # Packages that only need to load (no version stated or pinned)
