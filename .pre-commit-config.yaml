@@ -1,0 +1,23 @@
+# Automatically runs on git commit.
+# Git pauses and runs ruff, lintr, and styler against the files staged
+# Errors has to be fixed prior to commit passing
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: lintr
+        name: lintr
+        entry: Rscript -e "lintr::lint_dir('.')"
+        language: system
+        files: '\.R$'
+      - id: styler
+        name: styler
+        entry: Rscript -e "styler::style_dir('.')"
+        language: system
+        files: '\.R$'
