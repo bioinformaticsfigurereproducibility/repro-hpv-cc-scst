@@ -2,6 +2,11 @@
 
 Reproducibility study rebuilding the bioinformatics pipeline and figures from Su et al. 2025 (*Front Immunol*) — an integrated scRNA-seq/spatial transcriptomics/bulk RNA-seq analysis of HPV-associated immune microenvironment heterogeneity in cervical cancer.
 
+## Getting Started
+
+- **[Environment Setup](docs/SETUP.md):** how to pull the pre-built Docker image, run it with the repository mounted, and verify the environment with the smoke test. It also covers the manual CIBERSORT step and common troubleshooting. Start here if you want to run the analysis.
+- **[How to Contribute](docs/CONTRIBUTING.md):** how we work in this repository: the branching model, commit message conventions, code style, and the pull request and review process. Read this before making changes.
+
 ## Source Publication
 
 **Citation:**
